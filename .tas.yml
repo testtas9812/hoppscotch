@@ -1,7 +1,7 @@
 framework: jest
 preRun:
      command:
-        - pnpm install -f ./packages/hoppscotch-app/package.json
+        - pnpm install -w -f  ./packages/hoppscotch-app
 preMerge:
   pattern:
     - "./packages/hoppscotch-app/helpers/__tests__/*.spec.js"
