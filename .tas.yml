@@ -1,19 +1,15 @@
----
 framework: jest
-postMerge:
-  pattern:
-    - 'packages/hoppscotch-app/**/__tests__/**/*.js'
-    - 'packages/hoppscotch-js-sandbox/src/__tests__/**/*.ts'
-  strategy:
-    threshold: <5|100s|30m|6h>
-    type: <commit|time>
+preRun:
+     command:
+        - pnpm install -f ./packages/hoppscotch-app/package.json
 preMerge:
   pattern:
-    - 'packages/hoppscotch-app/**/__tests__/**/*.js'
-    - 'packages/hoppscotch-js-sandbox/src/__tests__/**/*.ts'
-preRun:
-  - npm install -g pnpm
-  - pnpm install
+    - "./packages/hoppscotch-app/helpers/__tests__/*.spec.js"
+postMerge:
+  pattern:
+    - "./packages/hoppscotch-app/helpers/__tests__/*.spec.js"
 postRun:
-  - node --version
-version: 2.0
+     command:
+        - pnpm --version
+configFile: "packages/hoppscotch-app/jest.config.js"
+version: 1.0
